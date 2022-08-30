@@ -25,7 +25,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Titulo</th>
+                            <th>Municipio</th>
                             <th>Descripcion</th>
                             <th>Precio</th>
                             <th>Ubicacion</th>
@@ -49,9 +49,11 @@
                                 Editar
                             </button>
                             <form action="{{route('Administrador.posts.delete', $post->id)}}" method="post">
+                            <a href="#" onclick="return confirm('¿Estás seguro que deseas eliminar el post?');">
                                 {{ csrf_field() }}
                                 @method('delete')
-                                <button class="btn btn-danger"> Eliminar</button>
+                                <button class="btn btn-danger"> <!--<img src="{{ asset('images/iconos/eliminar.png') }}" width="20" height="20"  class="icon-table">-->Eliminar</button>
+                           </a>
                             </form>
                             
                             </td>
@@ -65,7 +67,7 @@
                     <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Titulo</th>
+                            <th>Municipio</th>
                             <th>Descripcion</th>
                             <th>Imagen</th>
                             <th>Acciones</th>
@@ -96,30 +98,30 @@
                 {{ csrf_field() }}
             <div class="modal-body">
                 <div class="form-gorup">
-                    <label for="category-id">titulo del post</label>
-                    <select name="category_id" id="category-id" class="form-control"> 
-                        <option value=""> Seleccionar titulo de post</option>
+                    <label for="category-id">Municipio</label>
+                    <select name="category_id" id="category-id" class="form-control" type="text" name="Municipio"  placeholder="categoria" required> 
+                        <option value=""> Seleccionar Municipio</option>
                         @foreach ($categories as $category)
                         <option value ="{{$category->id}}">{{$category->titulo}} </option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-gorup">
-                    <label for="descripcion"> descripcion</label>
-                    <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10"> </textarea>
+                    <label for="descripcion"> Descripcion del cuarto</label>
+                    <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10" > </textarea>
                 </div>
                 <div class="form-gorup">
-                    <label for="precio"> Precio</label>
-                    <input type="text" name="precio" class="form-control" id="precio">
+                    <label for="precio">Precio de renta </label>
+                    <input type="text" name="precio" class="form-control" id="precio" type="text" name="Precio" placeholder="Precio" required>
                 </div>
                 <div class="form-gorup">
-                    <label for="ubicacion"> ubicacion</label>
-                    <input type="text" name="ubicacion" class="form-control" id="ubicacion">
+                    <label for="ubicacion">Ubicacion</label>
+                    <input type="text" name="ubicacion" class="form-control" id="ubicacion"  type="text" name="Ubicación" placeholder="Ubicación" required>
                 </div>
 
                 <div class="form-group">
                    <label for="featured">Imagen principal</label>
-                   <input type="file" name="featured" class="form-control" id="featured">
+                   <input type="file" name="featured" class="form-control" id="featured" type="text" name="imagen"  placeholder="imagen" required>
                </div>
 
             </div>
@@ -148,3 +150,4 @@ $(document).ready(function() {
 } );
 </script>
 @stop
+

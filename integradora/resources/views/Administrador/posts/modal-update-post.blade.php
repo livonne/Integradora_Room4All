@@ -2,7 +2,7 @@
         <div class="modal-dialog">
         <div class="modal-content bg-default">
             <div class="modal-header">
-                <h4 class="modal-title">actualizar Post</h4>
+                <h4 class="modal-title">Actualizar Post</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
                 </div>
@@ -15,9 +15,9 @@
                 <!--PARA MODIFICAR LA CATEGORIA-->
 
                 <div class="form-group">
-                        <label for="category_id">Titulo</label>
-                        <select name="category_id" id="category-id" class="form-control" >
-                       <option value=""> Elegir titulo</option>
+                        <label for="category_id">Municipio</label>
+                        <select name="category_id" id="category-id" class="form-control" type="text" name="categoria"  placeholder="categoria" required>
+                       <option value=""> Elegir Municipio</option>
                        @foreach($categories as $category)
                         <option value="{{$category->id}}" <?= $category->id == $post->category->id ? 'selected': '' ?> > {{$category->titulo}} </option>
                        @endforeach
@@ -25,21 +25,21 @@
                 </div>
 
              <!--PARA MODIFICAR EL CONTENIDO DEL POST-->
-                <div class="form-group">
-                        <label for="descripcion">descripcion</label>
-                            <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10">{{$post->descripcion}}</textarea>
+                <div class="form-group" >
+                        <label for="descripcion">Descripcion del cuarto</label>
+                            <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10" name="descripcion" placeholder="Descripcion" required>{{$post->descripcion}}</textarea>
                 </div>
                 
              <!--PARA MODIFICAR EL PRECIO-->
                 <div class="form-gorup">
-                    <label for="precio"> precio</label>
+                    <label for="precio">Precio de renta</label>
                     <input type="text" name="precio" class="form-control" id="precio" value="{{$post->precio}}">
                 </div>
 
 
              <!--PARA MODIFICAR LA UBICACION PENDIENTEEE EL GOOGLE-->
                 <div class="form-gorup">
-                    <label for="ubicacion"> ubicacion</label>
+                    <label for="ubicacion">Ubicación del cuarto</label>
                     <input type="text" name="ubicacion" class="form-control" id="ubicacion" value="{{$post->ubicacion}}">
                 </div>
 

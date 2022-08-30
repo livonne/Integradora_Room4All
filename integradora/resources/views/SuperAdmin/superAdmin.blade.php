@@ -19,6 +19,9 @@
 
                     {{ __('Super Administrador') }}
                 </div>
+                <div>
+            <a name="nickname" class="nav-link" href="/superAdmin/categories">Presiona para crear o editar un municipio</a>
+        </div>
             </div>
     </div>
 </div>

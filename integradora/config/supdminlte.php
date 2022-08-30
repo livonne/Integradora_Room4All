@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Administrador',
+    'title' => 'Super Administrador',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -247,27 +247,25 @@ return [
             //'can'  => 'manage-blog',
         //],
         //[
-          //  'text'        => 'pages',
+          //  'text'        => 'ps',
             //'url'         => 'admin/pages',
             //'icon'        => 'far fa-fw fa-file',
             //'label'       => 4,
             //'label_color' => 'success',
         //],
         ['header' => 'Publicaciones'],
-        //[
-         //   'text' => 'Titulo',
-           // 'url'  => '/superAdmin/categories',
-            //'icon_color' => 'green',
-            //'icon' => 'fas fa-fw fa-user',
-        //],
         [
-            'text' => 'Publicar cuarto',
-            'url'  => '/admin/posts',
-            'icon_color' => 'red',
-            'icon' => 'fas fa-fw fa-book',
+            'text' => 'Titulo',
+            'url'  => '/admin/categories',
+            'icon_color' => 'green',
+            'icon' => 'fas fa-fw fa-user',
         ],
-
-        
+        //[
+           // 'text' => 'Publicar cuarto',
+            //'url'  => '/admin/posts',
+            //'icon_color' => 'red',
+            //'icon' => 'fas fa-fw fa-book',
+        //],
         
        // [
          //   'text'    => 'multilevel',

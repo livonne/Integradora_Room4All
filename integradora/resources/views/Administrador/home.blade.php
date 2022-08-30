@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div>
-            <a name="nickname" class="nav-link" href="/admin/categories">Presiona para crear el titulo de primer post</a>
+            <a name="nickname" class="nav-link" href="/admin/posts">Presiona para crear tu Post</a>
         </div>
     </div>
 </div>

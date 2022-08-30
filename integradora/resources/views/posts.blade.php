@@ -29,16 +29,16 @@
                         <div class="card m-auto" style="width: 18rem;">
                             <img class="card-img-top" src="{{asset($post->featured)}}" alt="{{$post->titulo}}">
                             <div class="card-body">
-                                <small class="card-txt-category">Categoría: {{$post->category->titulo}}</small>
+                                <small class="card-txt-category"><b>Municipio:</b> {{$post->category->titulo}}</small>
                                 <!--<h5 class="card-title my-2">Aprende Python en un dos tres</h5>-->
-                                <div class="d-card-text">
+                                <div class="d-card-text"><b> Descripcion:</b>
                                     {{$post->descripcion}}
                                 </div>
-                                <div class="d-card-text"><b>precio:
-                                    {{$post->precio}}</b>
+                                <div class="d-card-text"><b>precio:</b>
+                                    {{$post->precio}}
                                 </div>
-                                <div class="d-card-text"><b>Ubicacion:
-                                    {{$post->ubicacion}}</b>
+                                <div class="d-card-text"><b>Ubicacion:</b>
+                                    {{$post->ubicacion}}
                                 </div>
                                 <!--<a href="#" class="post-link"><b>Leer más</b></a>-->
                                 <hr>

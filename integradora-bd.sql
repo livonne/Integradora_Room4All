@@ -23,14 +23,14 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla integradora.categories: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
 INSERT IGNORE INTO `categories` (`id`, `titulo`, `created_at`, `updated_at`) VALUES
-	(2, 'precioso', '2022-07-30 05:46:06', '2022-07-31 02:24:52'),
-	(3, 'Espacisosa', '2022-07-30 05:46:52', '2022-07-31 02:25:05'),
-	(4, 'Para toda la familia', '2022-07-30 05:47:42', '2022-07-31 02:25:15');
+	(10, 'Ocosingo', '2022-08-29 21:29:24', '2022-08-29 21:29:24'),
+	(11, 'Tuxtla Gutierrez', '2022-08-29 21:29:49', '2022-08-29 21:29:49'),
+	(12, 'San Cristobal', '2022-08-29 22:32:55', '2022-08-29 22:32:55');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
 -- Volcando estructura para tabla integradora.failed_jobs
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla integradora.migrations: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla integradora.migrations: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT IGNORE INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_10_12_000000_create_users_table', 1),
@@ -113,15 +113,13 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `posts_category_id_foreign` (`category_id`),
-  CONSTRAINT `posts_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  CONSTRAINT `posts_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla integradora.posts: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla integradora.posts: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 INSERT IGNORE INTO `posts` (`id`, `category_id`, `descripcion`, `precio`, `ubicacion`, `featured`, `created_at`, `updated_at`) VALUES
-	(1, 3, 'Tengo dos estanterías, una llena de libros y otra con Monster Highs y Cristina, mi muñeca favorita. Mi pupitre es rosa al igual que la silla. Encima del pupitre tengo mi radio, la lámpara, lápices, gomas y libros. Mi armario tiene una parte amarilla y la otra de espejos. También tengo una cajonera con cinco cajones. Encima de ella tengo una botella de agua y unos libros.', '20500', 'Centro Deportivo Xochimilco', 'images/featureds/1659234647-1.jpg', '2022-07-30 23:15:43', '2022-07-31 02:30:47'),
-	(2, 4, 'Al entrar a mi habitación, lo primero que veo es la cama y la ventana. La ventana la tengo decorada con dibujitos y las cortinas con mariposas, flores, libélulas, hojas y setas. Un lado de mi habitación tiene la pared con papel de corazones y dentro flores de color verde, amarillo, beig, rosa, azul y plateado.', '5200', 'barrio  montealban calle uxmal 23', 'images/featureds/1659234458-2.jpg', '2022-07-31 00:21:17', '2022-07-31 02:27:38'),
-	(3, 2, 'Mi habitación está subiendo las escaleras de mi casa, es mediana, blanca y todos los muebles son de madera. En mi escritorio hay una lámpara, mi portátil, encima de mi escritorio hay una estantería grande donde guardo mis libros y mis Monster Highs, también guardo mi material para hacer mis deberes.', '3000', 'ocosingo  montealban calle uxmal #8', 'images/featureds/1659234468-3.png', '2022-07-31 00:22:03', '2022-07-31 02:27:48');
+	(20, 10, 'Casa espaciosa con una gran sala, cuenta con un patio así como también se aceptan mascotas', '1200', 'barrio  montealban calle uxmal 23', 'images/featureds/1661814408-casita_en_ocosingo_2_dormitorios_200_m2_1560019656093961686.jpg', '2022-08-29 23:06:48', '2022-08-29 23:06:48');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
 -- Volcando estructura para tabla integradora.users
@@ -141,11 +139,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_codigo_unique` (`codigo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla integradora.users: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla integradora.users: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT IGNORE INTO `users` (`id`, `name`, `email`, `codigo`, `tipo`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 	(1, 'admin alma', 'admin@gmail.com', 'supadm', '1', NULL, '$2y$10$tUxQudlqGtU1jH5b/mOZ3ONIt53X53fElYZktqWrVsvi.FsN3RqeO', NULL, '2022-07-30 00:43:24', '2022-07-30 00:43:24'),
-	(2, 'Juanito', 'juanito@gmail.com', 'adm', '2', NULL, '$2y$10$ZK2PQQqrx1MbJkAgeDs2yucxQSQSXJXt5xJ.hikHuzDflldyVmbpe', 'Z8x5Anx54ykwnHwtuiOmRtjsYyq5fTCj2t8FUPmZsx4YBNCakWw6SFeqWd5S', '2022-07-30 00:43:24', '2022-07-30 00:43:24'),
+	(2, 'Juanito', 'juanito@gmail.com', 'adm', '2', NULL, '$2y$10$ZK2PQQqrx1MbJkAgeDs2yucxQSQSXJXt5xJ.hikHuzDflldyVmbpe', 'rBdNYoWcVvLL5uInLfoNGvGbw2AyqY6r1pAaljh6bmxNlrT6ypXZBjDxYc7l', '2022-07-30 00:43:24', '2022-07-30 00:43:24'),
 	(3, 'Ivonne', 'minion@gmail.com', 'use1', '3', NULL, '$2y$10$2/Litjd9MfyyGQrbJKJ4Huy1ANAuoAobp9vJsErirjh1B4ZhpQ/L6', NULL, '2022-07-30 00:43:25', '2022-07-30 00:43:25');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 

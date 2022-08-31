@@ -5,9 +5,9 @@
 @section('content_header')
 <h1>
     Posts
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-post">
+    <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-post">
         Crear
-    </button>
+    </button>-->
 </h1>
 @stop
 
@@ -24,7 +24,7 @@
                 <table id="posts" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                        <th>ID</th>
+                            <th>ID</th>
                             <th>Titulo</th>
                             <th>Descripcion</th>
                             <th>Municipio</th>
@@ -37,7 +37,7 @@
                     <tbody>
                         @foreach ($posts as $post)
                         <tr>
-                            <td>{{$post->id}}</td>
+                        <td>{{$post->id}}</td>
                             <td>{{$post->encabezado}} </td>
                             <td>{{$post->descripcion}} </td>
                             <td>{{$post->category->titulo}}</td>
@@ -47,10 +47,10 @@
                             <img src="{{asset($post->featured)}}" alt="{{ $post->title }}" class="img-fluid" width="100px">
                             </td>
                             <td> 
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-post-{{$post->id}}">
+                          <!--  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-post-{{$post->id}}">
                                 Editar
-                            </button>
-                            <form action="{{route('Administrador.posts.delete', $post->id)}}" method="post">
+                            </button>-->
+                            <form action="{{route('SuperAdmin.posts.delete', $post->id)}}" method="post">
                             <a href="#" onclick="return confirm('¿Estás seguro que deseas eliminar el post?');">
                                 {{ csrf_field() }}
                                 @method('delete')
@@ -61,7 +61,7 @@
                             </td>
                         </tr>
                         <!-- modal update post -->
-                    @include('Administrador.posts.modal-update-post')
+                    @include('SuperAdmin.posts.modal-update-post')
          <!-- /.modal-dialog -->
 <!-- /.modal -->
                         @endforeach
@@ -69,7 +69,7 @@
                     <tfoot>
                         <tr>
                         <th>ID</th>
-                            <th>Titulo</th>
+                        <th>Titulo</th>
                             <th>Descripcion</th>
                             <th>Municipio</th>
                             <th>Precio</th>
@@ -105,12 +105,12 @@
 
                 <div class="form-gorup">
                     <label for="encabezado">Titulo o encabezado </label>
-                    <input type="text" name="encabezado" class="form-control" id="encabezado" type="text" name="encabezado" placeholder="titulo" required>
+                    <input type="text" name="encabezado" class="form-control" id="encabezado" type="text" name="encabezado" placeholder="encabezado" required>
                 </div>
 
                 <div class="form-gorup">
                     <label for="descripcion"> Descripcion del cuarto</label>
-                    <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10"  placeholder="categoria" required > </textarea>
+                    <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10" > </textarea>
                 </div>
 
                 <div class="form-gorup">

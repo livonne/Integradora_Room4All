@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('categories');
             $table->longText('descripcion');
             $table->string('precio');
+            $table->string('encabezado');
             $table->string('ubicacion');
             $table->string('featured');
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Super;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ class PostsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('soloadmin',['only'=>['index']]);
+        $this->middleware('solosuper',['only'=>['index']]);
     }
    
 
@@ -23,7 +23,7 @@ class PostsController extends Controller
         $categories= Category::all();
         
 
-        return view('Administrador.posts.index', [
+        return view('SuperAdmin.posts.index', [
         'posts' => $posts,
         'categories' => $categories,
         

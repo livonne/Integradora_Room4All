@@ -92,7 +92,7 @@
             <div class="modal-body">
                 <div class="form-gorup">
                     <label for="titulo"> Categoría</label>
-                    <input type="text" name="titulo" class="form-control" id="titulo">
+                    <input type="text" name="titulo" class="form-control" id="titulo" required>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">

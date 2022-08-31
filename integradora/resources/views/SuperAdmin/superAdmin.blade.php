@@ -21,6 +21,7 @@
                 </div>
                 <div>
             <a name="nickname" class="nav-link" href="/superAdmin/categories">Presiona para crear o editar un municipio</a>
+            <a name="nickname" class="nav-link" href="/superAdmin/posts">Presiona para eliminar un post</a>
         </div>
             </div>
     </div>

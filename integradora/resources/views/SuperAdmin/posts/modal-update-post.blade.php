@@ -7,22 +7,10 @@
                     <span aria-hidden="true">&times;</span></button>
                 </div>
 
-            <form action="{{ route('Administrador.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data"> 
+            <form action="{{ route('SuperAdmin.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data"> 
                 {{ csrf_field() }}
             <div class="modal-body">
                
-                 <!--PARA MODIFICAR EL TITULO O ENCABEZADO-->
-                
-                 <div class="form-gorup">
-                    <label for="encabezado">encabezado</label>
-                    <input type="text" name="encabezado" class="form-control" id="encabezado" value="{{$post->encabezado}}">
-                </div>
-
-                <!--PARA MODIFICAR EL CONTENIDO DEL POST-->
-                <div class="form-group" >
-                        <label for="descripcion">Descripcion del cuarto</label>
-                            <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10" required>{{$post->descripcion}}</textarea>
-                </div>
 
                 <!--PARA MODIFICAR LA CATEGORIA-->
 
@@ -36,7 +24,11 @@
                     </select>
                 </div>
 
-             
+             <!--PARA MODIFICAR EL CONTENIDO DEL POST-->
+                <div class="form-group" >
+                        <label for="descripcion">Descripcion del cuarto</label>
+                            <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10" name="descripcion" placeholder="Descripcion" required>{{$post->descripcion}}</textarea>
+                </div>
                 
              <!--PARA MODIFICAR EL PRECIO-->
                 <div class="form-gorup">
@@ -44,7 +36,11 @@
                     <input type="text" name="precio" class="form-control" id="precio" value="{{$post->precio}}">
                 </div>
 
-             
+              <!--PARA MODIFICAR EL PRECIO-->
+              <div class="form-gorup">
+                    <label for="encabezado">encabezado</label>
+                    <input type="text" name="encabezado" class="form-control" id="encabezado" value="{{$post->encabezado}}">
+                </div>
 
 
              <!--PARA MODIFICAR LA UBICACION PENDIENTEEE EL GOOGLE-->

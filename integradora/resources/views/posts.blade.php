@@ -31,6 +31,11 @@
                             <div class="card-body">
                                 <small class="card-txt-category"><b>Municipio:</b> {{$post->category->titulo}}</small>
                                 <!--<h5 class="card-title my-2">Aprende Python en un dos tres</h5>-->
+                                
+                                <div class="d-card-text"><b> Titulo:</b>
+                                    {{$post->encabezado}}
+                                </div>
+                                
                                 <div class="d-card-text"><b> Descripcion:</b>
                                     {{$post->descripcion}}
                                 </div>

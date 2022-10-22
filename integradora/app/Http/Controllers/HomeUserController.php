@@ -24,6 +24,16 @@ class HomeUserController extends Controller
     }
 
 
+    public function post($postId)
+    {
+        $post = Post::find($postId);
+        $latesPosts = Post::orderBy('id', 'DESc')->take(3)->get();
+        return view('post', [
+            'post' => $post,
+            'latesPosts' => $latesPosts
+        ]);
+    }
+
     public function postByCategory($category)
     {
         $categories= Category::all();

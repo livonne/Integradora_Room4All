@@ -182,11 +182,11 @@
                 <h3>Redes sociales</h3>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <img src="images/facebook.png" width="30" height="30">
+                    <a class="nav-link" href="https://www.facebook.com/profile.php?id=100086626554574#"> <img src="images/facebook.png" width="30" height="30"> </a>
                     </li>
                     <br>
-                    <li class="nav-item">
-                        <img src="images/instagram.png" width="30" height="30">
+                    <li class="nav-item" >
+                        <img src="images/instagram.png" width="30" height="30"> 
                     </li>
                     <br>
                     <li class="nav-item">

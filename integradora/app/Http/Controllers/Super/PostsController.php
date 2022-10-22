@@ -87,7 +87,7 @@ class PostsController extends Controller
         $post->titulo = $request->titulo;
         $post->delete();
         
-        return redirect()->back();
+        return redirect()->back()->with('eliminar', 'ok');
     }
     
     

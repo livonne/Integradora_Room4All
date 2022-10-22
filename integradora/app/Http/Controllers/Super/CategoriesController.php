@@ -36,7 +36,7 @@ class CategoriesController extends Controller
         $category->titulo = $request->titulo;
         $category->save();
         
-        return redirect()->back();
+        return redirect()->back()->with('actualizar', 'ok');
     }
 
     public function delete(Request $request, $categoryId)
@@ -46,7 +46,7 @@ class CategoriesController extends Controller
         $category->titulo = $request->titulo;
         $category->delete();
         
-        return redirect()->back();
+        return redirect()->back()->with('eliminar', 'ok');
     }
 
 }

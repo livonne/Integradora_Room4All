@@ -6,10 +6,10 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
                 </div>
-
-            <form action="{{ route('Administrador.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data"> 
-                {{ csrf_field() }}
-            <div class="modal-body">
+                     <form action="{{ route('Administrador.posts.update', $post->id) }}" method="POST" class="boton-actualizar" enctype="multipart/form-data"> 
+                         {{ csrf_field() }}
+             
+                <div class="modal-body">
                
                  <!--PARA MODIFICAR EL TITULO O ENCABEZADO-->
                 
@@ -63,8 +63,10 @@
 
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-outline-light" data-dismiss="modal">cerrar</button>
-                <button type="submit" class="btn btn-outline-primary">guardar</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">cerrar</button>
+                <!--<a   href="#"  onclick="return confirm('¿Estás seguro que deseas guardar los?');" >-->
+                <button type="submit" class="btn btn-outline-warning boton-actualizar">guardar</button>
+                <!--</a>-->
             </div>
             </form>
 

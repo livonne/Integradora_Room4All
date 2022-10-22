@@ -38,5 +38,13 @@ class TodosSeeder extends Seeder
             'tipo' => '3',
             'codigo' => 'use1',
         ]);
+
+       /* $userAdmin=User::create([
+            'name' => 'luna',
+            'email' => 'luna@gmail.com',
+            'password' => Hash::make('12345'),
+            'tipo' => '2',
+            'codigo' => 'adm',
+        ]);*/
     }
 }

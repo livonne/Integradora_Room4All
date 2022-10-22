@@ -4,14 +4,13 @@
 
 @section('content_header')
 <h1>
-    Posts
-    <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-post">
-        Crear
-    </button>-->
+   Posts
 </h1>
 @stop
 
 @section('content')
+
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -24,7 +23,7 @@
                 <table id="posts" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                        <th>ID</th>
                             <th>Titulo</th>
                             <th>Descripcion</th>
                             <th>Municipio</th>
@@ -37,7 +36,8 @@
                     <tbody>
                         @foreach ($posts as $post)
                         <tr>
-                        <td>{{$post->id}}</td>
+                            <td>{{$post->id}}</td>
+                            <!--<td>{{$post->user_id}}</td>-->
                             <td>{{$post->encabezado}} </td>
                             <td>{{$post->descripcion}} </td>
                             <td>{{$post->category->titulo}}</td>
@@ -46,22 +46,25 @@
                             <td>
                             <img src="{{asset($post->featured)}}" alt="{{ $post->title }}" class="img-fluid" width="100px">
                             </td>
-                            <td> 
-                          <!--  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-update-post-{{$post->id}}">
-                                Editar
-                            </button>-->
-                            <form action="{{route('SuperAdmin.posts.delete', $post->id)}}" method="post">
-                            <a href="#" onclick="return confirm('¿Estás seguro que deseas eliminar el post?');">
-                                {{ csrf_field() }}
-                                @method('delete')
-                                <button class="btn btn-danger"> <!--<img src="{{ asset('images/iconos/eliminar.png') }}" width="20" height="20"  class="icon-table">-->Eliminar</button>
-                           </a>
-                            </form>
+                            <td>
+                                <div class="row">
+                                    
+                                    <div class="col-sm-3">
+                                        <form  action="{{route('Administrador.posts.delete', $post->id)}}" class="formulario-eliminar" method="post">
+                                           <!--<a   href="#"  onclick="return confirm('¿Estás seguro que deseas eliminar el post?');" >-->
+                                                {{ csrf_field() }}
+                                                @method('delete')
+                                                <button  id="btnPromt" class="btn btn-danger"><img src="{{ asset('images/iconos/eliminar.png') }}" width="20" height="20"  class="icon-table"></button>
+                                            <!--</a>-->
+                                        </form>
+                                    </div>
+                                </div>
+                            
                             
                             </td>
                         </tr>
                         <!-- modal update post -->
-                    @include('SuperAdmin.posts.modal-update-post')
+                    @include('Administrador.posts.modal-update-post')
          <!-- /.modal-dialog -->
 <!-- /.modal -->
                         @endforeach
@@ -69,7 +72,7 @@
                     <tfoot>
                         <tr>
                         <th>ID</th>
-                        <th>Titulo</th>
+                            <th>Titulo</th>
                             <th>Descripcion</th>
                             <th>Municipio</th>
                             <th>Precio</th>
@@ -105,12 +108,12 @@
 
                 <div class="form-gorup">
                     <label for="encabezado">Titulo o encabezado </label>
-                    <input type="text" name="encabezado" class="form-control" id="encabezado" type="text" name="encabezado" placeholder="encabezado" required>
+                    <input type="text" name="encabezado" class="form-control" id="encabezado" type="text" name="encabezado" placeholder="titulo" required>
                 </div>
 
                 <div class="form-gorup">
                     <label for="descripcion"> Descripcion del cuarto</label>
-                    <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10" > </textarea>
+                    <textarea name="descripcion" class="form-control" id="descripcion" cols="30" rows="10"  placeholder="categoria" required > </textarea>
                 </div>
 
                 <div class="form-gorup">
@@ -140,8 +143,12 @@
 
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-outline-light" data-dismiss="modal">cerrar</button>
-                <button type="submit" class="btn btn-outline-primary">guardar</button>
+
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">cerrar</button>
+              
+               <!-- <a  href="#"  onclick="return confirm('¿Estás seguro que deseas agregar este post?');" >-->
+                    <button type="submit" class="btn btn-outline-primary boton-actualizar">guardar</button>
+                <!--</a>-->
             </div>
             </form>
 
@@ -155,6 +162,62 @@
 
 @stop
 
+
+<!--ALERTAS PARA POST DE ELIMINAR Y ACTUALIZAR-->
+
+@section('js')
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+@if(session('eliminar') == 'ok')
+    <script>
+     Swal.fire(
+        '¡Eliminado!',
+        'Tu post ha sido eliminado',
+        'Exitoso'
+    )
+    </script>
+
+
+@endif
+
+<script> 
+    $('.formulario-eliminar').submit(function(e){
+        e.preventDefault();
+
+        Swal.fire({
+    title: '¿Estas seguro?',
+    text: "!Este post se eliminara definitivamente!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: '¡Si, eliminar!',
+    cancelButtonText: 'Cancelar'
+    }).then((result) => {
+    if (result.isConfirmed) {
+       
+        this.submit();
+    }
+    })
+    
+    });
+
+
+</script>
+
+@stop()
+
+
+
+
+
+
+
+
+
+
 @section('js')
 <script>
 $(document).ready(function() {
@@ -163,5 +226,6 @@ $(document).ready(function() {
     } );
 } );
 </script>
-@stop
+
+@stop()
 

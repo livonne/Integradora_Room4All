@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span></button>
                 </div>
 
-            <form action="{{ route('SuperAdmin.categories.update', $category->id) }}" method="POST"> 
+            <form action="{{ route('SuperAdmin.categories.update', $category->id) }}" class="boton-actualizar" method="POST"> 
                 {{ csrf_field() }}
             <div class="modal-body">
                 <div class="form-gorup">
@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-outline-light" data-dismiss="modal">cerrar</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">cerrar</button>
                 <button type="submit" class="btn btn-outline-primary">guardar</button>
             </div>
             </form>

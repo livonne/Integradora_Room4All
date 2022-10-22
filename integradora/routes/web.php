@@ -20,6 +20,8 @@ Route::get('/posts/{category}', [HomeUserController::class, 'postByCategory'])->
 
 Route::get('/post', [HomeUserController::class, 'index'])->name('post');
 
+Route::get('/post/{postId}', [HomeUserController::class, 'post'])->name('post');
+
 
 //titulo (no necesariamente debe ser el titulo pero asi de mientras para que jale :,c)
 Route::get('/superAdmin/categories', [App\Http\Controllers\Super\CategoriesController::class, 'index'])->name('SuperAdmin.categories.index');

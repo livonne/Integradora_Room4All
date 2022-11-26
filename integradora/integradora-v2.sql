@@ -23,14 +23,16 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla integradora.categories: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
 INSERT IGNORE INTO `categories` (`id`, `titulo`, `created_at`, `updated_at`) VALUES
-	(10, 'Ocosingo', '2022-08-29 21:29:24', '2022-08-29 21:29:24'),
+	(10, 'Ocosingo', '2022-08-29 21:29:24', '2022-08-30 02:08:58'),
 	(11, 'Tuxtla Gutierrez', '2022-08-29 21:29:49', '2022-08-29 21:29:49'),
-	(12, 'San Cristobal', '2022-08-29 22:32:55', '2022-08-29 22:32:55');
+	(12, 'San Cristobal', '2022-08-29 22:32:55', '2022-08-29 22:32:55'),
+	(13, 'Motozintla', '2022-08-30 01:17:06', '2022-08-30 01:17:06'),
+	(14, 'Tapachula', '2022-08-30 19:21:10', '2022-08-30 19:21:21');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
 -- Volcando estructura para tabla integradora.failed_jobs
@@ -58,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla integradora.migrations: ~6 rows (aproximadamente)
+-- Volcando datos para la tabla integradora.migrations: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT IGNORE INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_10_12_000000_create_users_table', 1),
@@ -105,6 +107,7 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `category_id` bigint(20) unsigned NOT NULL,
+  `encabezado` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `descripcion` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `precio` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ubicacion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -114,12 +117,13 @@ CREATE TABLE IF NOT EXISTS `posts` (
   PRIMARY KEY (`id`),
   KEY `posts_category_id_foreign` (`category_id`),
   CONSTRAINT `posts_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla integradora.posts: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla integradora.posts: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT IGNORE INTO `posts` (`id`, `category_id`, `descripcion`, `precio`, `ubicacion`, `featured`, `created_at`, `updated_at`) VALUES
-	(20, 10, 'Casa espaciosa con una gran sala, cuenta con un patio así como también se aceptan mascotas', '1200', 'barrio  montealban calle uxmal 23', 'images/featureds/1661814408-casita_en_ocosingo_2_dormitorios_200_m2_1560019656093961686.jpg', '2022-08-29 23:06:48', '2022-08-29 23:06:48');
+INSERT IGNORE INTO `posts` (`id`, `category_id`, `encabezado`, `descripcion`, `precio`, `ubicacion`, `featured`, `created_at`, `updated_at`) VALUES
+	(25, 11, 'unu', 'sadasd', '12.2', 'barrio  montealban calle uxmal 23', 'images/featureds/1661904472-c.jpg', '2022-08-31 00:07:52', '2022-08-31 00:07:52'),
+	(27, 13, 'ya??', 'sdasdad', '500', 'montealban calle uxmal #8', 'images/featureds/1661906414-casita_en_ocosingo_2_dormitorios_200_m2_1560019656093961686.jpg', '2022-08-31 00:40:16', '2022-08-31 00:48:55');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
 -- Volcando estructura para tabla integradora.users
@@ -139,11 +143,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_codigo_unique` (`codigo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla integradora.users: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla integradora.users: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT IGNORE INTO `users` (`id`, `name`, `email`, `codigo`, `tipo`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 	(1, 'admin alma', 'admin@gmail.com', 'supadm', '1', NULL, '$2y$10$tUxQudlqGtU1jH5b/mOZ3ONIt53X53fElYZktqWrVsvi.FsN3RqeO', NULL, '2022-07-30 00:43:24', '2022-07-30 00:43:24'),
-	(2, 'Juanito', 'juanito@gmail.com', 'adm', '2', NULL, '$2y$10$ZK2PQQqrx1MbJkAgeDs2yucxQSQSXJXt5xJ.hikHuzDflldyVmbpe', 'rBdNYoWcVvLL5uInLfoNGvGbw2AyqY6r1pAaljh6bmxNlrT6ypXZBjDxYc7l', '2022-07-30 00:43:24', '2022-07-30 00:43:24'),
+	(2, 'Juanito', 'juanito@gmail.com', 'adm', '2', NULL, '$2y$10$ZK2PQQqrx1MbJkAgeDs2yucxQSQSXJXt5xJ.hikHuzDflldyVmbpe', 'P5D0prPyGr2niCGIWUKtt3pL373ey0F8Oni6virMjRCdAzvRzyag8aAAVYGA', '2022-07-30 00:43:24', '2022-07-30 00:43:24'),
 	(3, 'Ivonne', 'minion@gmail.com', 'use1', '3', NULL, '$2y$10$2/Litjd9MfyyGQrbJKJ4Huy1ANAuoAobp9vJsErirjh1B4ZhpQ/L6', NULL, '2022-07-30 00:43:25', '2022-07-30 00:43:25');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 

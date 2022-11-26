@@ -17,8 +17,15 @@ return new class extends Migration
             $table->id();
             //$table->unsignedBigInteger('category_id');
             $table->foreignId('category_id')->constrained('categories');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
+                    
             $table->longText('descripcion');
             $table->string('precio');
+            $table->string('encabezado');
             $table->string('ubicacion');
             $table->string('featured');
 

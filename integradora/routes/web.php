@@ -6,7 +6,8 @@ use App\Http\Controllers\SuperController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RentacuartosController;
 use App\Http\Controllers\HomeUserController;
-use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Super\CategoriesController;
+use App\Http\Controllers\Super\PostsController;
 
 
 Route::get('/', function () {
@@ -19,12 +20,14 @@ Route::get('/posts/{category}', [HomeUserController::class, 'postByCategory'])->
 
 Route::get('/post', [HomeUserController::class, 'index'])->name('post');
 
+Route::get('/post/{postId}', [HomeUserController::class, 'post'])->name('post');
+
 
 //titulo (no necesariamente debe ser el titulo pero asi de mientras para que jale :,c)
-Route::get('/admin/categories', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('Administrador.categories.index');
-Route::post('/admin/categories/store', [App\Http\Controllers\Admin\CategoriesController::class, 'store'])->name('Administrador.categories.store');
-Route::post('/admin/categories/{categoryId}/update', [App\Http\Controllers\Admin\CategoriesController::class, 'update'])->name('Administrador.categories.update');
-Route::delete('/admin/categories/{categoryId}/delete', [App\Http\Controllers\Admin\CategoriesController::class, 'delete'])->name('Administrador.categories.delete');
+Route::get('/superAdmin/categories', [App\Http\Controllers\Super\CategoriesController::class, 'index'])->name('SuperAdmin.categories.index');
+Route::post('/superAdmin/categories/store', [App\Http\Controllers\Super\CategoriesController::class, 'store'])->name('SuperAdmin.categories.store');
+Route::post('/superAdmin/categories/{categoryId}/update', [App\Http\Controllers\Super\CategoriesController::class, 'update'])->name('SuperAdmin.categories.update');
+Route::delete('/superAdmin/categories/{categoryId}/delete', [App\Http\Controllers\Super\CategoriesController::class, 'delete'])->name('SuperAdmin.categories.delete');
 
 
 //posts
@@ -33,6 +36,14 @@ Route::post('/admin/posts/store', [App\Http\Controllers\Admin\PostsController::c
 Route::post('/admin/posts/{postId}/update', [App\Http\Controllers\Admin\PostsController::class, 'update'])->name('Administrador.posts.update');
 Route::delete('/admin/posts/{postId}/delete', [App\Http\Controllers\Admin\PostsController::class, 'delete'])->name('Administrador.posts.delete');
 
+
+
+//post para super admin prueba
+
+Route::get('/superAdmin/posts', [App\Http\Controllers\Super\PostsController::class, 'index'])->name('SuperAdmin.posts.index');
+Route::post('/superAdmin/posts/store', [App\Http\Controllers\Super\PostsController::class, 'store'])->name('SuperAdmin.posts.store');
+Route::post('/superAdmin/posts/{postId}/update', [App\Http\Controllers\Super\PostsController::class, 'update'])->name('SuperAdmin.posts.update');
+Route::delete('/superAdmin/posts/{postId}/delete', [App\Http\Controllers\Super\PostsController::class, 'delete'])->name('SuperAdmin.posts.delete');
 
 
 

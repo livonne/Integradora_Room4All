@@ -27,20 +27,27 @@
 
                     <div class="col-md-4 col-12 justify-content-center mb-5">
                         <div class="card m-auto" style="width: 18rem;">
-                            <img class="card-img-top" src="{{asset($post->featured)}}" alt="{{$post->titulo}}">
+                            <a href="{{route('post', $post->id)}}">
+                            <img class="card-img-top" src="{{asset($post->featured)}}" alt="{{$post->titulo}}" width="80" height="290" >
+                            </a>
                             <div class="card-body">
-                                <small class="card-txt-category">Categoría: {{$post->category->titulo}}</small>
+                                <small class="card-txt-category"><b>Municipio:</b> {{$post->category->titulo}}</small>
                                 <!--<h5 class="card-title my-2">Aprende Python en un dos tres</h5>-->
-                                <div class="d-card-text">
+                                
+                                <div class="d-card-text"><b> Titulo:</b>
+                                    {{$post->encabezado}}
+                                </div>
+                                
+                                <!--<div class="d-card-text" style="overflow: hidden; height: 12rem;;" ><b> Descripcion:</b>
                                     {{$post->descripcion}}
+                                </div>-->
+                                <div class="d-card-text"><b>precio:</b>
+                                    {{$post->precio}}
                                 </div>
-                                <div class="d-card-text"><b>precio:
-                                    {{$post->precio}}</b>
-                                </div>
-                                <div class="d-card-text"><b>Ubicacion:
-                                    {{$post->ubicacion}}</b>
-                                </div>
-                                <!--<a href="#" class="post-link"><b>Leer más</b></a>-->
+                               <!-- <div class="d-card-text"><b>Ubicacion:</b>
+                                    {{$post->ubicacion}}
+                                </div>-->
+                                <a href="{{route('post', $post->id)}}" class="post-link"><b>Leer más</b></a>
                                 <hr>
                                 <div class="row">
                                     <div class="col-6 text-left">
